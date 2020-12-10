@@ -8,20 +8,20 @@ var sassMiddleware = require('node-sass-middleware');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-var app = express();
-
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/todo', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  // we're connected!
-  console.log("db connected")
+    // we're connected!
+    console.log('db connected.');
 });
+
+var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

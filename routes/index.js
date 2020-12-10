@@ -8,7 +8,8 @@ router.get('/', function(req, res, next) {
     {id:2 , description: 'Go To School'},
     {id:3 , description: 'Wash hair'},
     {id:4 , description: 'Brush Teeth'},
-    {id:5 , description: 'Finish Project'}
+    {id:5 , description: 'Finish Project'},
+    {id:6, description: 'Start Project'}
   ];
   res.render('index', { title: 'Todo', items: items });
 });

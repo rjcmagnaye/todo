@@ -1,7 +1,11 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
-const itemSchema = new Schema ({
-    description : {type: String, required: true},
-    date: {type: date, default: Date.now}
-})
+let itemSchema = new Schema({
+    description:  { type: String, required: true },
+    date: { type: Date, default: Date.now }
+});
+  
+var Item = mongoose.model('Item', itemSchema);
+  
+module.exports = Item;

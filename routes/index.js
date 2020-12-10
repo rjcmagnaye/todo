@@ -1,18 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
+var Item = require('../models/items')
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  const items = [
-    { id: 1, description: 'Go to Store'},
-    { id: 2, description: 'Go to School'},
-    { id: 3, description: 'Wash hair'},
-    { id: 4, description: 'Brush teeth'},
-    { id: 5, description: 'Finish Project'},
-    { id: 6, description: 'Start Project'},
-  ];
+  Item.find(function (err, items) {
+        if (err) console.log(err)
 
-  res.render('index', { title: 'Todo', items: items });
+        res.render('index', { title: 'Todo', items: items });
+    });
 });
 
 router.post('/', function(req, res, next) {

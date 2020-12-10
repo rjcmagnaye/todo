@@ -23,8 +23,9 @@ var data = [
         'documents': [
           { description: 'Go to Store'},
           { description: 'Go to School'},
-          { description: 'Wash hair'},
-          { description: 'Brush teeth'},
+          { description: 'Wash Hair'},
+          { description: 'Brush Teeth'},
+          { description: 'Wash Face'},
           { description: 'Finish Project'},
           { description: 'Start Project'}
         ]

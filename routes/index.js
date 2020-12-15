@@ -6,15 +6,28 @@ var Item = require('../models/items')
 /* GET home page. */
 router.get('/', function(req, res, next) {
   Item.find(function (err, items) {
-        if (err) console.log(err)
+        if (err) console.log(err.erors)
 
-        res.render('index', { title: 'Todo', items: items });
+        res.render('index', { title: 'Todo',errors: {}, item: [], items: items });
     });
 });
 
 router.post('/', function(req, res, next) {
-  console.log(req.body.item);
-  res.redirect('/');
+  let description = req.body.description;
+
+  let item = new Item({
+    description: description 
+  });
+
+  item.save(function(err, items) {
+    if (err){
+      Item.find({}).exec().then((items)=>{
+      res.render('index', {title: 'Todo', errors: err.errors, item: item, items: items})})
+    } else {
+      res.redirect('/')
+    }
+  });
+
 });
 
 router.get('/about', function(req, res, next) {
